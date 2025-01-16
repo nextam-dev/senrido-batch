@@ -8,8 +8,11 @@ import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import jp.co.senrido.batch.service.SuperSaasService;
 
 /**
  * データ連携タスクレット
@@ -21,6 +24,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class MainTasklet implements Tasklet {
 	
 	private LocalDateTime sysdate;
+	
+	@Autowired
+	private SuperSaasService superSaasService;
 	
 	static Logger logger = LoggerFactory.getLogger(MainTasklet.class);
 
@@ -34,6 +40,7 @@ public class MainTasklet implements Tasklet {
 	
 		try {
 			// TODO ここに処理を記載する。
+			superSaasService.range();
 
 		} catch (Throwable th) {
 			th.printStackTrace();

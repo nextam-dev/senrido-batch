@@ -33,6 +33,12 @@ public interface TGlareDao {
 	 * @return the TVisitingHospital entity List
 	 */
 	@Select
+	List<TGlare> selectByHistory(Integer id, String visitDate);
+	
+	/**
+	 * @return the TVisitingHospital entity List
+	 */
+	@Select
 	TGlare selectByDto(Integer id, LocalDateTime visitDate);
 
 	/**
