@@ -31,6 +31,8 @@ public class SuperSaasRequest<E> extends HttpRequestHelper<E> {
 	public final String VERSION = "/api";
 
 	public final String RANGE = VERSION + "/range/{scheduleId}.json?api_key=" + APIKEY;
+	
+	public final String CHANGES = VERSION + "/changes/{scheduleId}.json?api_key=" + APIKEY;
 
 	public final String FREE = VERSION + "/free{scheduleId}.json?api_key=" + APIKEY + "&from{fromTime}";
 
@@ -73,6 +75,21 @@ public class SuperSaasRequest<E> extends HttpRequestHelper<E> {
 		return this.http("https", DOMAIN, url)
 				.requestGet().getJSON();
 	}
+	
+	/**
+	 * 変更一覧を取得.
+	 *
+	 * @param address
+	 * @return
+	 * @throws Throwable
+	 */
+	public E getChangesToDto(String scheduleId) throws Throwable {
+		String url = CHANGES.replace("{scheduleId}", scheduleId);
+		url = url + "&from=2025-01-16&to=2025-01-17";
+		return this.http("https", DOMAIN, url)
+				.requestGet().getJSON();
+	}
+
 
 	/**
 	 * 空き予定を取得.

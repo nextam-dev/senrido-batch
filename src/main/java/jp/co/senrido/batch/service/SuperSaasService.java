@@ -19,4 +19,15 @@ public class SuperSaasService {
 		return true;
 		
 	}
+	
+	public Boolean changes() throws Throwable {
+		SuperSaasRequest request = new SuperSaasRequest(SuperSaasDto.class);
+		
+		SuperSaasDto dto = (SuperSaasDto)request.getChangesToDto("755174");
+		
+		System.out.println(JSON.encode(dto));
+		
+		return true;
+		
+	}
 }

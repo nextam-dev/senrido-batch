@@ -41,6 +41,7 @@ public class MainTasklet implements Tasklet {
 		try {
 			// TODO ここに処理を記載する。
 			superSaasService.range();
+			superSaasService.changes();
 
 		} catch (Throwable th) {
 			th.printStackTrace();
